@@ -91,9 +91,9 @@ export async function bootstrap(): Promise<NestExpressApplication> {
   }
 
   const port = configService.appConfig.port;
-  await app.listen(port);
+  await app.listen(port, '0.0.0.0');
 
-  console.info(`server running on ${await app.getUrl()}`);
+  console.info(`server running on ${await app.getUrl()}}`);
 
   return app;
 }
