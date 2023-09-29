@@ -5,6 +5,7 @@ module.exports = {
       2,
       'always',
       [
+        'del', // Xóa tính năng
         'feat', // Tính năng mới
         'fix', // Sửa lỗi
         'improve', // Cải thiện code
