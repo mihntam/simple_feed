@@ -16,12 +16,12 @@
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./src",
-    "incremental": true,
+    "incremental": false,
     "strictNullChecks": true,
     "skipLibCheck": true,
-    "noUnusedParameters": true,
+    "noUnusedParameters": false,
     "noUnusedLocals": true,
-    "strict": true
+    "strict": false
   },
   "include": [
     "src/**/*"

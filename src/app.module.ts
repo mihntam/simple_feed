@@ -1,16 +1,8 @@
 import './boilerplate.polyfill';
 
-import path from 'node:path';
-
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import {
-  AcceptLanguageResolver,
-  HeaderResolver,
-  I18nModule,
-  QueryResolver,
-} from 'nestjs-i18n';
 import { DataSource } from 'typeorm';
 import { addTransactionalDataSource } from 'typeorm-transactional';
 
@@ -45,22 +37,7 @@ import { SharedModule } from './shared/shared.module';
         );
       },
     }),
-    I18nModule.forRootAsync({
-      useFactory: (configService: ApiConfigService) => ({
-        fallbackLanguage: configService.fallbackLanguage,
-        loaderOptions: {
-          path: path.join(__dirname, '/i18n/'),
-          watch: configService.isDevelopment,
-        },
-        resolvers: [
-          { use: QueryResolver, options: ['lang'] },
-          AcceptLanguageResolver,
-          new HeaderResolver(['x-lang']),
-        ],
-      }),
-      imports: [SharedModule],
-      inject: [ApiConfigService],
-    }),
+
     HealthCheckerModule,
   ],
   providers: [],

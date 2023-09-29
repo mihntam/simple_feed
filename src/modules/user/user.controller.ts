@@ -12,7 +12,6 @@ import { PageDto } from '../../common/dto/page.dto';
 import { RoleType } from '../../constants';
 import { ApiPageOkResponse, Auth, AuthUser, UUIDParam } from '../../decorators';
 import { UseLanguageInterceptor } from '../../interceptors/language-interceptor.service';
-import { TranslationService } from '../../shared/services/translation.service';
 import { UserDto } from './dtos/user.dto';
 import { UsersPageOptionsDto } from './dtos/users-page-options.dto';
 import { UserEntity } from './user.entity';
@@ -21,19 +20,14 @@ import { UserService } from './user.service';
 @Controller('users')
 @ApiTags('users')
 export class UserController {
-  constructor(
-    private userService: UserService,
-    private readonly translationService: TranslationService,
-  ) {}
+  constructor(private userService: UserService) {}
 
   @Get('admin')
   @Auth([RoleType.USER])
   @HttpCode(HttpStatus.OK)
   @UseLanguageInterceptor()
-  async admin(@AuthUser() user: UserEntity) {
-    const translation = await this.translationService.translate(
-      'admin.keywords.admin',
-    );
+  async(@AuthUser() user: UserEntity) {
+    const translation = 'lorem';
 
     return {
       text: `${translation} ${user.firstName}`,
