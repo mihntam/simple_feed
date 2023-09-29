@@ -9,7 +9,7 @@
     "build:prod": "tsc -p tsconfig.build.json",
     "postbuild:prod": "copyfiles --up 1 src/**/*.json dist",
     "start:hmr": "node dist/main.hmr.ts",
-    "start:dev": "ts-node src/main.ts",
+    "start:dev": "nest start --watch",
     "start:prod": "node dist/main.js",
     "typeorm": "typeorm-ts-node-esm",
     "migration:generate": "yarn run typeorm migration:generate -d ormconfig",
